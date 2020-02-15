@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="804d6738-7db6-4dd3-92f6-1d31e39eff86" name="Default Changelist" comment="" />
+    <list default="true" id="804d6738-7db6-4dd3-92f6-1d31e39eff86" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Lab 2/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/lab2 (1).iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/lab2 (1).iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/lab2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/lab2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/src/main/java/upf/edu/TwitterFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/src/main/java/upf/edu/TwitterFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/src/main/java/upf/edu/filter/FileLanguageFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/src/main/java/upf/edu/filter/FileLanguageFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/src/test/java/upf/edu/TwitterFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/src/test/java/upf/edu/TwitterFilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/classes/upf/edu/TwitterFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/classes/upf/edu/TwitterFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/classes/upf/edu/filter/FileLanguageFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/classes/upf/edu/filter/FileLanguageFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/lab2-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/lab2-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/original-lab2-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/original-lab2-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/surefire-reports/TEST-upf.edu.TwitterFilterTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/surefire-reports/upf.edu.TwitterFilterTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 2/target/test-classes/upf/edu/TwitterFilterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 2/target/test-classes/upf/edu/TwitterFilterTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1XqbOQIoimqunHxyv4ksBGydQh7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -15,6 +38,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../LSDSP2" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -28,5 +52,11 @@
       <updated>1581776538892</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="743" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581792632077">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="743" y="310" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1581792632077" />
   </component>
 </project>
