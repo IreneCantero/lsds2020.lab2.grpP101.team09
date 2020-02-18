@@ -43,10 +43,11 @@ public class TwitterLanguageFilterApp {
 
             //Load input
             JavaRDD<String> tweets = sparkContext.textFile(inputFile);
-            JavaRDD<String> ft = tweets.filter(t->t.length()>0 && SimplifiedTweet.fromJson(t).isPresent()).filter(t2->t2.contains("\"lang\":"+"\""+language+"\""));
-            //JavaRDD<String> ft = tweets.filter(t->t.length()>0 && SimplifiedTweet.fromJson(t).isPresent());//.filter(t2->t2.equals(new JsonObject()));
-          //  JavaRDD<JsonObject> jsons = tweets
-            //        .filter(t->t.length()>0 && SimplifiedTweet.fromJson(t).isPresent()).;
+            JavaRDD<JsonObject> ft = tweets
+                    .filter(t->t.length()>0 && SimplifiedTweet.fromJson(t).isPresent())
+                    .map(s->parser.fromJson(s,JsonObject.class))
+                    .filter(json-> json.get("lang").toString()=="\""+language+"\"");
+        
             System.out.println("efewfwef:" + ft.count());
 
             //The function filterLanguage returns an int variable containing the number of tweets in one language and in one file
