@@ -1,8 +1,8 @@
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/parser/SimplifiedTweet.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/filter/FileLanguageFilter.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/filter/LanguageFilter.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/uploader/S3Uploader.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/filter/FilterException.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/uploader/Uploader.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/TwitterLanguageFilterApp.java
-/home/u150279/Desktop/LSDS-Lab2-master/LSDSP2TT/src/main/java/upf/edu/TwitterFilter.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/parser/SimplifiedTweet.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/uploader/S3Uploader.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/filter/FileLanguageFilter.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/TwitterFilter.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/filter/FilterException.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/uploader/Uploader.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/filter/LanguageFilter.java
+/home/u150279/Desktop/LSDS-Lab2-master/LSDS-Lab2/LSDS_P2/src/main/java/upf/edu/TwitterLanguageFilterApp.java
