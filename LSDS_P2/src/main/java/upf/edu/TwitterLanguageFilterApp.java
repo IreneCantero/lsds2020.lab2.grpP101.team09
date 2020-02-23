@@ -11,6 +11,7 @@ import upf.edu.parser.SimplifiedTweet;
 import upf.edu.uploader.S3Uploader;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class TwitterLanguageFilterApp {
         //String inputFile = argsList.get(3);
         SparkConf conf =new SparkConf().setAppName("Filter Language");
         JavaSparkContext sparkContext = new JavaSparkContext(conf);
-
+        List<SimplifiedTweet> fs = new ArrayList<SimplifiedTweet>();
 
         System.out.println("Language: " + language + ". Output file: " + outputFile + ". Destination bucket: " + bucket);
          for (String inputFile : argsList.subList(3, argsList.size())) {
@@ -45,12 +46,12 @@ public class TwitterLanguageFilterApp {
                      .filter(t -> t.length() > 0 && SimplifiedTweet.fromJson(t).isPresent())
                      .map(s -> SimplifiedTweet.fromJson(s).get())
                      .filter(r -> r.get_language().equals("\"" + language + "\""));
-             List<SimplifiedTweet> fs = tst.collect();
-             System.out.println("Simplified tweets:" + fs.size());
-             tst.saveAsTextFile(outputFile);
+             List <SimplifiedTweet> aux = tst.collect();
+             fs.addAll(aux);
          }
-
-
+        System.out.println("Simplified tweets:" + fs.size());
+        JavaRDD<SimplifiedTweet> result = sparkContext.parallelize(fs);
+        result.saveAsTextFile(outputFile);
 
         System.out.println("Total time: " + (float) (System.nanoTime() - startTimeTotal) / 1000000000 + " s");
     }
