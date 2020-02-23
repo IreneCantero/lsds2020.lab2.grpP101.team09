@@ -8,7 +8,7 @@ import com.google.gson.JsonElement;
 import java.io.Serializable;
 import java.util.Optional;
 
-public class SimplifiedTweet {
+public class SimplifiedTweet implements Serializable{
 
   private static Gson parser = new Gson();
 

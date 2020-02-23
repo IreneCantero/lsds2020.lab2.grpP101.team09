@@ -1,0 +1,2 @@
+spark-submit --class upf.edu.TwitterLanguageFilterApp target/LSDS_P2-1.0-SNAPSHOT.jar en /home/carlos/Desktop/hola.txt eurovisiondata /home/carlos/Desktop/Eurovision3.json /home/carlos/Desktop/Eurovision5.json
+

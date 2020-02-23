@@ -31,35 +31,27 @@ public class TwitterLanguageFilterApp {
         String language = argsList.get(0);
         String outputFile = argsList.get(1);
         String bucket = argsList.get(2);
-
+        //String inputFile = argsList.get(3);
         SparkConf conf =new SparkConf().setAppName("Filter Language");
         JavaSparkContext sparkContext = new JavaSparkContext(conf);
 
 
         System.out.println("Language: " + language + ". Output file: " + outputFile + ". Destination bucket: " + bucket);
-        for (String inputFile : argsList.subList(3, argsList.size())) {
-            System.out.println("Processing: " + inputFile);
-            //final FileLanguageFilter filter = new FileLanguageFilter(inputFile, outputFile);
+         for (String inputFile : argsList.subList(3, argsList.size())) {
+             System.out.println("Processing: " + inputFile);
 
-            //Load input
-            JavaRDD<String> tweets = sparkContext.textFile(inputFile);
-            JavaRDD<JsonObject> ft = tweets
-                    .filter(t->t.length()>0 && SimplifiedTweet.fromJson(t).isPresent())
-                    .map(s->parser.fromJson(s,JsonObject.class))
-                    .filter(json-> json.get("lang").toString()=="\""+language+"\"");
-        
-            System.out.println("efewfwef:" + ft.count());
+             JavaRDD<String> tweets = sparkContext.textFile(inputFile);
+             JavaRDD<SimplifiedTweet> tst = tweets
+                     .filter(t -> t.length() > 0 && SimplifiedTweet.fromJson(t).isPresent())
+                     .map(s -> SimplifiedTweet.fromJson(s).get())
+                     .filter(r -> r.get_language().equals("\"" + language + "\""));
+             List<SimplifiedTweet> fs = tst.collect();
+             System.out.println("Simplified tweets:" + fs.size());
+             tst.saveAsTextFile(outputFile);
+         }
 
-            //The function filterLanguage returns an int variable containing the number of tweets in one language and in one file
-            //total_tweets += filter.filterLanguage(language);
-        }
 
-        //final S3Uploader uploader = new S3Uploader(bucket, "output.json", "upf");
-        //uploader.upload(Arrays.asList(outputFile));
 
-        //Print total number of tweets in the specified language
-        //System.out.println("Total Tweets in " + language + ": " + total_tweets);
-        //Print total time
         System.out.println("Total time: " + (float) (System.nanoTime() - startTimeTotal) / 1000000000 + " s");
     }
 }
