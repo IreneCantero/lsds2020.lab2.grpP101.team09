@@ -18,3 +18,8 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 Simplified tweets:509435
 Total time: 332.1074 s
 
+
+
+Language: es. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run3. Destination bucket: eurovisiondata
+Simplified tweets:509435
+Total time: 309.02942 s

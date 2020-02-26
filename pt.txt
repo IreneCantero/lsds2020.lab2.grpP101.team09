@@ -17,3 +17,7 @@ Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json
 Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json: 318.3095 s
 Simplified tweets:37623
 Total time: 322.1364 s
+
+Language: pt. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run1. Destination bucket: eurovisiondata
+Simplified tweets:37623
+Total time: 313.6498 s
