@@ -86,13 +86,20 @@ public class ExtendedSimplifiedTweet implements Serializable{
    * @param jsonStr
    * @return an {@link Optional} of a {@link ExtendedSimplifiedTweet}
    */
-  /*
+
   public static Optional<ExtendedSimplifiedTweet> fromJson(String jsonStr) {
 
     //Takes the string and parses it to a JSON object
     JsonObject object = parser.fromJson(jsonStr, JsonObject.class);
     //JSON object that takes the information of the user that made the tweet
     JsonObject jase = object.getAsJsonObject("user");
+    try {
+      JsonObject retweet = object.getAsJsonObject("retweeted_status");
+      JsonObject retweetedUser = retweet.getAsJsonObject("user");
+    } catch (Exception e) {
+      JsonObject retweet = null;
+      JsonObject retweetedUser = null;
+    }
 
     //Makes sure if all the fields of the tweet exist
     // If everything exists, add information to the variable tweet (SimplifiedTweet) and then return it
@@ -101,11 +108,13 @@ public class ExtendedSimplifiedTweet implements Serializable{
             .flatMap(userId -> Optional.ofNullable(jase.get("id")))
             .flatMap(username -> Optional.ofNullable(jase.get("name")))
             .flatMap(lang -> Optional.ofNullable(object.get("lang")))
+            .flatMap(isRetweet -> Optional.ofNullable(object.get("is_retweeted")))
+            .flatMap(retweetUserId -> Optional.ofNullable(retweetUser.get("id")))
+            .flatMap(retweetTweetId -> Optional.ofNullable(retweet.get("id")))
             .flatMap(timeStampMs -> Optional.ofNullable(object.get("timestamp_ms")))
-            .map(a -> new ExtendedSimplifiedTweet(object.get("id").getAsLong(), object.get("text").toString(), jase.get("id").getAsLong(),
-                    jase.get("name").toString(), object.get("lang").toString(), object.get("timestamp_ms").getAsLong()));
+            .map(a -> new ExtendedSimplifiedTweet(object.get("id").getAsLong(), object.get("text").toString(), jase.get("id").getAsLong(), object.get("is_retweeted").toString()
+                     jase.get("name").toString(), object.get("lang").toString(), retweetUser.get("id").toString(), retweet.get("id").toString() object.get("timestamp_ms").getAsLong()));
 
     return tweet;
   }
-  */
 }
