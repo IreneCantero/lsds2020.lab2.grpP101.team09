@@ -38,24 +38,22 @@ public class TwitterLanguageFilterApp {
         String bucket = argsList.get(2);
         SparkConf conf =new SparkConf().setAppName("Filter Language");
         JavaSparkContext sparkContext = new JavaSparkContext(conf);
-        List<SimplifiedTweet> fs = new ArrayList<SimplifiedTweet>();
-
+        JavaRDD<SimplifiedTweet> tst = sparkContext.emptyRDD();
+        JavaRDD<SimplifiedTweet> result = sparkContext.emptyRDD();
         System.out.println("Language: " + language + ". Output file: " + outputFile + ". Destination bucket: " + bucket);
          for (String inputFile : argsList.subList(3, argsList.size())) {
              long startTimePartial = System.nanoTime();
              System.out.println("Processing: " + inputFile);
 
              JavaRDD<String> tweets = sparkContext.textFile(inputFile);
-             JavaRDD<SimplifiedTweet> tst = tweets
+              tst = tweets
                      .filter(t -> t.length() > 0 && SimplifiedTweet.fromJson(t).isPresent())
                      .map(s -> SimplifiedTweet.fromJson(s).get())
                      .filter(r -> r.get_language().equals("\"" + language + "\""));
-             List <SimplifiedTweet> aux = tst.collect();
-             fs.addAll(aux);
+             result = sparkContext.union(tst);
              System.out.println("Partial time for "+ inputFile+ ": " + (float) (System.nanoTime() - startTimeTotal) / 1000000000 + " s");
          }
-        System.out.println("Simplified tweets:" + fs.size());
-         JavaRDD<SimplifiedTweet> result = sparkContext.parallelize(fs);
+        System.out.println("Simplified tweets:" + result.count());
         JavaRDD<String> content = result.map(s->stringParser(s));
         content.saveAsTextFile(outputFile);
 
