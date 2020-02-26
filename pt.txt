@@ -18,3 +18,25 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 Simplified tweets:37623
 Total time: 319.36826 s
 
+WITH 8 SLAVES:
+
+Language: pt. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run6. Destination bucket: eurovisiondata
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json: 29.098764 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision4.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision4.json: 14.069407 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision5.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision5.json: 5.799392 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision6.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision6.json: 6.9521055 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision7.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision7.json: 6.0536623 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision8.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision8.json: 6.1692133 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json: 3.5396962 s
+Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json
+Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json: 21.752651 s
+Simplified tweets:37623
+Total time: 93.43489 s
+
