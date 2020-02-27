@@ -20,24 +20,23 @@ public class BigGramsApp{
         return parser.toJson(myObj);
     }
     public static List<String> getBiGrams(JavaRDD<String> input) {
-        String str = input.toString();
-        List<String> bigrams = new ArrayList<String>();
-        StringTokenizer itr = new StringTokenizer(str);
-        if(itr.countTokens() > 1)
-        {
-            System.out.println("String array size : " + itr.countTokens());
-            String s1 = "";
-            String s2 = "";
-            String s3 = "";
-            while (itr.hasMoreTokens())
-            {
-                if(s1.isEmpty())
-                    s1 = itr.nextToken();
-                s2 = itr.nextToken();
-                s3 = s1 + " " + s2;
-                bigrams.add(s3);
-                s1 = s2;
-                s2 = "";
+        List<String> bigrams = input.collect();
+        for(String str: bigrams) {
+            StringTokenizer itr = new StringTokenizer(str);
+            if (itr.countTokens() > 1) {
+                System.out.println("String array size : " + itr.countTokens());
+                String s1 = "";
+                String s2 = "";
+                String s3 = "";
+                while (itr.hasMoreTokens()) {
+                    if (s1.isEmpty())
+                        s1 = itr.nextToken();
+                    s2 = itr.nextToken();
+                    s3 = s1 + " " + s2;
+                    bigrams.add(s3);
+                    s1 = s2;
+                    s2 = "";
+                }
             }
         }
         return bigrams;
@@ -67,10 +66,10 @@ public class BigGramsApp{
 
         // Load filtered original tweets
         JavaRDD<ExtendedSimplifiedTweet> result = sparkContext.parallelize(efs);
-        JavaRDD<String> content = result.map(s->stringParser(s));
+        JavaRDD<String> content = result.map(s->s.get_text());
         List<String> StringBiGrams = getBiGrams(content);
         JavaRDD<String> biGrams = sparkContext.parallelize(StringBiGrams);
-
+        System.out.println("partial words: " + biGrams.count());
         JavaPairRDD<String, Integer> counts = biGrams
                 .flatMap(s -> Arrays.asList(s.split("[ ]")).iterator())
                 .map(word -> normalise(word))
@@ -78,7 +77,7 @@ public class BigGramsApp{
                 .reduceByKey((a, b) -> a + b)
                 .sortByKey(false);
         System.out.println("Total words: " + counts.count());
-        counts.saveAsTextFile(outputDir);
+        //counts.saveAsTextFile(outputDir);
     }
 
     private static String normalise(String word) {

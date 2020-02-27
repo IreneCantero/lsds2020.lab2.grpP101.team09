@@ -93,9 +93,20 @@ public class ExtendedSimplifiedTweet implements Serializable{
     JsonObject object = parser.fromJson(jsonStr, JsonObject.class);
     //JSON object that takes the information of the user that made the tweet
     JsonObject jase = object.getAsJsonObject("user");
-
-    JsonObject retweet = object.getAsJsonObject("retweeted_status");
-    JsonObject retweetedUser = retweet.getAsJsonObject("user");
+    JsonObject retweet;
+    JsonObject retweetedUser;
+    Optional<JsonObject> aux1 = Optional.ofNullable(object.getAsJsonObject("retweeted_status"));
+    Optional<JsonObject> aux2 = Optional.empty();
+    if(aux1.isPresent()!=false) {
+      aux2 = Optional.ofNullable(aux1.get().getAsJsonObject("user"));
+    }
+    if(aux2.isPresent()){
+      retweet = aux1.get();
+      retweetedUser = aux2.get();
+    }
+    else{
+      return Optional.empty();
+    }
 
     //Makes sure if all the fields of the tweet exist
     // If everything exists, add information to the variable tweet (SimplifiedTweet) and then return it
