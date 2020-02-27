@@ -114,17 +114,16 @@ public class ExtendedSimplifiedTweet implements Serializable{
             .flatMap(text -> Optional.ofNullable(object.get("text")))
             .flatMap(userId -> Optional.ofNullable(jase.get("id")))
             .flatMap(username -> Optional.ofNullable(jase.get("name")))
-            .flatMap(followers -> Optional.ofNullable(object.get("followers_count")))
+            .flatMap(followers -> Optional.ofNullable(jase.get("followers_count")))
             .flatMap(lang -> Optional.ofNullable(object.get("lang")))
-            .flatMap(isRetweet -> Optional.ofNullable(object.get("retweeted_status") != null))
+            .flatMap(isRetweet -> Optional.ofNullable(object.get("retweeted")))
             .flatMap(retweetUserId -> Optional.ofNullable(retweetedUser.get("id")))
             .flatMap(retweetTweetId -> Optional.ofNullable(retweet.get("id")))
             .flatMap(timeStampMs -> Optional.ofNullable(object.get("timestamp_ms")))
             .map(a -> new ExtendedSimplifiedTweet(object.get("id").getAsLong(), object.get("text").toString(), jase.get("id").getAsLong(),
-                     jase.get("name").toString(), object.get("followers_count").getAsLong(), object.get("lang").toString(),
-                    retweet.get("retweeted_status").getAsBoolean(), retweetedUser.get("id").getAsLong(), retweet.get("id").getAsLong(),
+                     jase.get("name").toString(), jase.get("followers_count").getAsLong(), object.get("lang").toString(),
+                    object.get("retweeted").getAsBoolean(), retweetedUser.get("id").getAsLong(), retweet.get("id").getAsLong(),
                     object.get("timestamp_ms").getAsLong()));
-
     return tweet;
   }
 }
