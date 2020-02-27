@@ -1,26 +1,25 @@
-import java.io.IOException;
-import java.util.StringTokenizer;
+package upf.edu;
 
+import com.google.gson.Gson;
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+import scala.Tuple2;
 import upf.edu.parser.ExtendedSimplifiedTweet;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
 
-public class BiGram {
-    String first;
-    String right;
-}
 
 public class BigGramsApp{
-
-    public List<String> getBiGrams(JavaRDD<String> input) {
+    public static String stringParser(ExtendedSimplifiedTweet myObj){
+        Gson parser = new Gson();
+        return parser.toJson(myObj);
+    }
+    public static List<String> getBiGrams(JavaRDD<String> input) {
         String str = input.toString();
         List<String> bigrams = new ArrayList<String>();
         StringTokenizer itr = new StringTokenizer(str);
@@ -41,7 +40,7 @@ public class BigGramsApp{
                 s2 = "";
             }
         }
-        return bigrams
+        return bigrams;
     }
 
     public static void main(String[] args){
@@ -50,7 +49,7 @@ public class BigGramsApp{
         String outputDir = argsList.get(1);
 
         //Create a SparkContext to initialize
-        SparkConf conf = new SparkConf().setAppName("Bi Gram Count");
+        SparkConf conf = new SparkConf().setAppName("BiGram Count");
         JavaSparkContext sparkContext = new JavaSparkContext(conf);
         List<ExtendedSimplifiedTweet> efs = new ArrayList<ExtendedSimplifiedTweet>();
 
@@ -61,7 +60,7 @@ public class BigGramsApp{
             JavaRDD<ExtendedSimplifiedTweet> tst = tweets
                     .filter(t -> t.length() > 0 && ExtendedSimplifiedTweet.fromJson(t).isPresent())
                     .map(s -> ExtendedSimplifiedTweet.fromJson(s).get())
-                    .filter(r -> r.get_isRetweeted().equals(false));
+                    .filter(r -> r.get_isRetweeted()==false);
             List <ExtendedSimplifiedTweet> aux = tst.collect();
             efs.addAll(aux);
         }
@@ -76,7 +75,8 @@ public class BigGramsApp{
                 .flatMap(s -> Arrays.asList(s.split("[ ]")).iterator())
                 .map(word -> normalise(word))
                 .mapToPair(word -> new Tuple2<>(word, 1))
-                .reduceByKey((a, b) -> a + b);
+                .reduceByKey((a, b) -> a + b)
+                .sortByKey(false);
         System.out.println("Total words: " + counts.count());
         counts.saveAsTextFile(outputDir);
     }

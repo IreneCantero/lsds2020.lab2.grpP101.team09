@@ -93,13 +93,9 @@ public class ExtendedSimplifiedTweet implements Serializable{
     JsonObject object = parser.fromJson(jsonStr, JsonObject.class);
     //JSON object that takes the information of the user that made the tweet
     JsonObject jase = object.getAsJsonObject("user");
-    try {
-      JsonObject retweet = object.getAsJsonObject("retweeted_status");
-      JsonObject retweetedUser = retweet.getAsJsonObject("user");
-    } catch (Exception e) {
-      JsonObject retweet = null;
-      JsonObject retweetedUser = null;
-    }
+
+    JsonObject retweet = object.getAsJsonObject("retweeted_status");
+    JsonObject retweetedUser = retweet.getAsJsonObject("user");
 
     //Makes sure if all the fields of the tweet exist
     // If everything exists, add information to the variable tweet (SimplifiedTweet) and then return it
@@ -114,7 +110,9 @@ public class ExtendedSimplifiedTweet implements Serializable{
             .flatMap(retweetTweetId -> Optional.ofNullable(retweet.get("id")))
             .flatMap(timeStampMs -> Optional.ofNullable(object.get("timestamp_ms")))
             .map(a -> new ExtendedSimplifiedTweet(object.get("id").getAsLong(), object.get("text").toString(), jase.get("id").getAsLong(),
-                     jase.get("name").toString(), object.get("followers_count").getAsLong(), object.get("lang").toString(), object.get("retweeted").toString(), retweetUser.get("id").getAsLong(), retweet.get("id").getAsLong() object.get("timestamp_ms").getAsLong()));
+                     jase.get("name").toString(), object.get("followers_count").getAsLong(), object.get("lang").toString(),
+                    retweet.get("retweeted_status").getAsBoolean(), retweetedUser.get("id").getAsLong(), retweet.get("id").getAsLong(),
+                    object.get("timestamp_ms").getAsLong()));
 
     return tweet;
   }
