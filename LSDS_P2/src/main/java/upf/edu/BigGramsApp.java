@@ -48,10 +48,13 @@ public class BigGramsApp{
         return bigrams;
     }
 
+    //IT DOESNT TAKE INTO ACCOUNT LANGUAGES!!!!!!! CHANGE IT!!!!!!!!!!!
+    //CHECK INPUTS ARGUMENTS
     public static void main(String[] args){
         List<String> argsList = Arrays.asList(args);
-        String input = argsList.get(0);
-        String outputDir = argsList.get(1);
+        String language = argsList.get(0);
+        String outputFile = argsList.get(1);
+        String bucket = argsList.get(2);
 
         //Create a SparkContext to initialize
         SparkConf conf = new SparkConf().setAppName("BiGram Count");
@@ -65,7 +68,7 @@ public class BigGramsApp{
             JavaRDD<ExtendedSimplifiedTweet> tst = tweets
                     .filter(t -> t.length() > 0 && ExtendedSimplifiedTweet.fromJson(t).isPresent())
                     .map(s -> ExtendedSimplifiedTweet.fromJson(s).get())
-                    .filter(r -> r.get_isRetweeted()==false);
+                    .filter(r -> r.get_isRetweeted()==true);
             List <ExtendedSimplifiedTweet> aux = tst.collect();
             efs.addAll(aux);
         }
