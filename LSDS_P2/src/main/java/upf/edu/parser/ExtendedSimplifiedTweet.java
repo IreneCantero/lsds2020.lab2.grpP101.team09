@@ -3,10 +3,11 @@ package upf.edu.parser;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import javax.swing.text.html.Option;
 import java.io.Serializable;
 import java.util.Optional;
 
-public class ExtendedSimplifiedTweet implements Serializable{
+public class ExtendedSimplifiedTweet  implements Serializable{
 
   private static Gson parser = new Gson();
 
@@ -20,11 +21,10 @@ public class ExtendedSimplifiedTweet implements Serializable{
   private final long retweetedUserId; // [if retweeted] (’retweeted_status’->’user’->’id’)
   private final long retweetedTweetId; // [if retweeted] (’retweeted_status’->’id’)
   private final long timestampMs;          // seconds from epoch ('timestamp_ms')
-
+  private final SimplifiedTweet original_tweet;
   public ExtendedSimplifiedTweet(long tweetId, String text, long userId, String userName,
                                  long followersCount, String language, boolean isRetweeted,
                                  long retweetedUserId, long retweetedTweetId, long timestampMs) {
-
     // PLACE YOUR CODE HERE!
     this.tweetId = tweetId;
     this.text = text;
@@ -36,7 +36,9 @@ public class ExtendedSimplifiedTweet implements Serializable{
     this.retweetedUserId = retweetedUserId;
     this.retweetedTweetId = retweetedTweetId;
     this.timestampMs = timestampMs;
-
+    if(isRetweeted) this.original_tweet = new SimplifiedTweet(retweetedTweetId, text,retweetedUserId, userName, language, timestampMs);
+    else
+    this.original_tweet = new SimplifiedTweet(tweetId, text,userId, userName, language, timestampMs);
   }
 
 
@@ -79,6 +81,8 @@ public class ExtendedSimplifiedTweet implements Serializable{
     return this.timestampMs;
   }
 
+  public SimplifiedTweet get_original_tweet(){ return this.original_tweet; }
+
   /**
    * Returns a {@link ExtendedSimplifiedTweet} from a JSON String.
    * If parsing fails, for any reason, return an {@link Optional#empty()}
@@ -93,35 +97,45 @@ public class ExtendedSimplifiedTweet implements Serializable{
     JsonObject object = parser.fromJson(jsonStr, JsonObject.class);
     //JSON object that takes the information of the user that made the tweet
     JsonObject jase = object.getAsJsonObject("user");
-    JsonObject retweet;
-    JsonObject retweetedUser;
-    Optional<JsonObject> aux1 = Optional.ofNullable(object.getAsJsonObject("retweeted_status"));
-    Optional<JsonObject> aux2 = Optional.empty();
-    if(aux1.isPresent()!=false) {
-      aux2 = Optional.ofNullable(aux1.get().getAsJsonObject("user"));
+
+    Optional<JsonObject> retweet = Optional.ofNullable(object.getAsJsonObject("retweeted_status"));
+    Optional<JsonObject> retweetedUser;
+
+    long uid = 0;
+    long tid = 0;
+    String text = "";
+    String username="";
+    String language ="";
+    if(Optional.ofNullable(object).isPresent()) {
+      if (Optional.ofNullable(object.get("text")).isPresent()) text = object.get("text").toString();
+      if (Optional.ofNullable(object.get("lang")).isPresent()) language = object.get("lang").toString();
     }
-    if(aux2.isPresent()){
-      retweet = aux1.get();
-      retweetedUser = aux2.get();
+    if(Optional.ofNullable(jase).isPresent()) {
+      if (Optional.ofNullable(jase.get("name")).isPresent()) username = jase.get("name").toString();
     }
-    else{
-      return Optional.empty();
+
+
+    if(retweet.isPresent()!=false) {
+      retweetedUser = Optional.ofNullable(retweet.get().getAsJsonObject("user"));
+      if (Optional.ofNullable(retweetedUser.get().get("id")).isPresent()) uid = retweetedUser.get().get("id").getAsLong();
+      if (Optional.ofNullable(retweet.get().get("id")).isPresent()) tid = retweet.get().get("id").getAsLong();
+      if (Optional.ofNullable(retweet.get().get("text")).isPresent()) text = retweet.get().get("text").getAsString();
+      if (Optional.ofNullable(retweet.get().get("name")).isPresent()) username= retweet.get().get("name").getAsString();
     }
 
     //Makes sure if all the fields of the tweet exist
     // If everything exists, add information to the variable tweet (SimplifiedTweet) and then return it
+    long finalTid = tid;
+    long finalUid = uid;
+    String finalText = text;
+    String finalUsername = username;
+    String finalLanguage = language;
     Optional<ExtendedSimplifiedTweet> tweet = Optional.ofNullable(object.get("id"))
-            .flatMap(text -> Optional.ofNullable(object.get("text")))
-            .flatMap(userId -> Optional.ofNullable(jase.get("id")))
-            .flatMap(username -> Optional.ofNullable(jase.get("name")))
             .flatMap(followers -> Optional.ofNullable(jase.get("followers_count")))
-            .flatMap(lang -> Optional.ofNullable(object.get("lang")))
-            .flatMap(retweetUserId -> Optional.ofNullable(retweetedUser.get("id")))
-            .flatMap(retweetTweetId -> Optional.ofNullable(retweet.get("id")))
             .flatMap(timeStampMs -> Optional.ofNullable(object.get("timestamp_ms")))
-            .map(a -> new ExtendedSimplifiedTweet(object.get("id").getAsLong(), object.get("text").toString(), jase.get("id").getAsLong(),
-                     jase.get("name").toString(), jase.get("followers_count").getAsLong(), object.get("lang").toString(),
-                    Optional.ofNullable(object.get("retweeted_status")).isPresent(), retweetedUser.get("id").getAsLong(), retweet.get("id").getAsLong(),
+            .map(a -> new ExtendedSimplifiedTweet(object.get("id").getAsLong(), finalText, jase.get("id").getAsLong(),
+                    finalUsername, jase.get("followers_count").getAsLong(), finalLanguage,
+                    Optional.ofNullable(object.get("retweeted_status")).isPresent(), finalTid, finalUid,
                     object.get("timestamp_ms").getAsLong()));
     return tweet;
   }

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
-
+import upf.edu.parser.ExtendedSimplifiedTweet;
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -29,6 +29,7 @@ public class SimplifiedTweet implements Serializable{
     this.userName = userName;
     this.language = language;
     this.timestampMs = timestampMs;
+
 
   }
 
