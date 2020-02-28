@@ -5,7 +5,7 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
-import upf.edu.parser.ExtendedSimplifiedTweet;
+import upf.edu.parser.MoreExtendedSimplifiedTweet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,12 +32,13 @@ public class MostRetweetedApp {
 
             JavaRDD<String> tweets = sparkContext.textFile(inputFile);
 
-            JavaRDD<ExtendedSimplifiedTweet> tst = tweets
-                    .filter(t -> t.length() > 0 && ExtendedSimplifiedTweet.fromJson(t).isPresent())
-                    .map(s -> ExtendedSimplifiedTweet.fromJson(s).get())
-                    .filter(x -> x.get_isRetweeted()==true);
+            JavaRDD<MoreExtendedSimplifiedTweet> tst = tweets
+                    .filter(t->t.length()>0 && MoreExtendedSimplifiedTweet.fromJson(t).isPresent())
+                    .map(s -> MoreExtendedSimplifiedTweet.fromJson(s).get());
+
             System.out.println("count tst: " + tst.count());
-            System.out.println(tst.take(1));
+            System.out.println("FHIOEQWHFIEQWFEIOWFEWIHF");
+            System.out.println("Halooooooooo: " + tst.take(3));
 
             /*JavaPairRDD<Long, Long> tot_rt_per_user = tst.mapToPair(t -> new Tuple2<>(t.get_userId(), t.get_retweet_count()))
                     .reduceByKey((a,b) -> a + b)
