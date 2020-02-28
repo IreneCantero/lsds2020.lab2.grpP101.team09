@@ -5,6 +5,7 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
+import scala.Tuple2$mcCC$sp;
 import upf.edu.parser.MoreExtendedSimplifiedTweet;
 
 import java.util.ArrayList;
@@ -36,17 +37,26 @@ public class MostRetweetedApp {
                     .filter(t->t.length()>0 && MoreExtendedSimplifiedTweet.fromJson(t).isPresent())
                     .map(s -> MoreExtendedSimplifiedTweet.fromJson(s).get());
 
-            System.out.println("count tst: " + tst.count());
-            System.out.println("FHIOEQWHFIEQWFEIOWFEWIHF");
-            System.out.println("Halooooooooo: " + tst.take(3));
-
-            /*JavaPairRDD<Long, Long> tot_rt_per_user = tst.mapToPair(t -> new Tuple2<>(t.get_userId(), t.get_retweet_count()))
-                    .reduceByKey((a,b) -> a + b)
+            JavaPairRDD<Long,Long> ugh = tst.mapToPair(w -> new Tuple2<>(w.get_retweetedUserId(), w.get_retweet_count()))
+                    .reduceByKey((a, b) -> a+b)
                     .mapToPair(mw -> new Tuple2<>(mw._2, mw._1))
                     .sortByKey(false)
-                    .mapToPair(mr -> new Tuple2<>(mr._2, mr._1));*/
-            //System.out.println("TOP 10 USERS: " + tot_rt_per_user.take(10));
+                    .mapToPair(mr -> new Tuple2<>(mr._2, mr._1))
+                    .distinct();
 
+            JavaRDD<Long> TOP10users = ugh.map(x -> x._1);
+            List<Long> users = TOP10users.take(10);
+
+            JavaRDD<MoreExtendedSimplifiedTweet> tt10rt = tst.filter(t -> users.contains(t.get_retweetedUserId()));
+
+            JavaPairRDD<Long, Tuple2> most_rt_tweets = tt10rt
+                .mapToPair(x -> new Tuple2<Long, Tuple2>(x.get_retweetedUserId(), new Tuple2<Long, Long>(x.get_retweetedTweetId(),x.get_retweet_count())));
+                    //.max((a,b)-> a._2._2 )
+
+            System.out.println("uiwehfiuewbhf: "+most_rt_tweets.take(5));
+
+            //System.out.println("TOP 10 USERS: " + tot_rt_per_user.take(10));
+            //Halooooooooooooooo: [(24679473,3756979), (38381308,2127042), (1501434991,1791122), (3143260474,1269714), (3480478035,1225842)]
         }
     }
 
