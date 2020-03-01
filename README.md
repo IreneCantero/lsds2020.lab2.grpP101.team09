@@ -1,10 +1,10 @@
 # LSDS-Lab2
 
-**Introduction**
+<h3>**Introduction**</h3>
 
 <p align = justify>This document contains all the benchmarks and results requested in this lab. However, we would like to use this README to clarify some nuances we had in the code.
-First of all is that perhaps the implementation is not the most optimal one, because the code is the result of thinking little parts and then coding it; i.e. we did
-many little steps to reach the solution. The second thing is regarding the input, because we followed the order of Lab 1 instead of the propose by David Solans
+First of all, perhaps the implementation is not the most optimal one, because the code is the result of thinking little parts and then coding it; i.e. we did
+many little steps to reach the solution. The second thing is regarding the input, because we followed the order of Lab 1 instead of the proposed one by David Solans
 in the forum. The input order of each exercise is as follows:
 </p>
 <ul>
@@ -19,11 +19,15 @@ in the forum. The input order of each exercise is as follows:
 </ul>
 <p align = justify>The last thing we would like to point out is that we created a *MoreExtendedSimplifiedTweet* class to get some information of the retweeted tweets from the retweets. However, at the end we realized that perhaps it is rendundant this class, because we could get the same information in *ExtendedSimplifiedTweet*.</p>
 
+<p>Our bucket link is: https://s3.console.aws.amazon.com/s3/buckets/edu.upf.ldsd2020.lab2.grp101.team09/?region=us-east-1&tab=overview</p>
+
+------------------------------------------------------------------------------------------------
+
 **Exercise 2 BENCHMARKS WITH DIFFERENT NUMBER OF SLAVES:**
 
 *es:*
 
-WITH 2 SLAVES:
+*WITH 2 SLAVES:*
 ``` 
 Language: es. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run3. Destination bucket: eurovisiondata
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
@@ -46,7 +50,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 **Simplified tweets:509435**
 **Total time: 326.1342 s**
 
-WITH 8 SLAVES:
+*WITH 8 SLAVES:*
 
 ``` 
 Language: es. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run4. Destination bucket: eurovisiondata
@@ -74,7 +78,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 
 *hu:*
 
-WITH 2 SLAVES:
+*WITH 2 SLAVES:*
 ``` 
 Language: hu. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run2. Destination bucket: eurovisiondata
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
@@ -97,7 +101,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 **Simplified tweets:1057**
 **Total time: 310.24466 s**
 
-WITH 8 SLAVES:
+*WITH 8 SLAVES:*
 ``` 
 Language: hu. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run5. Destination bucket: eurovisiondata
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
@@ -123,7 +127,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 
 *pt:*
 
-WITH 2 SLAVES:
+*WITH 2 SLAVES:*
 ``` 
 Language: pt. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run1. Destination bucket: eurovisiondata
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
@@ -146,7 +150,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 **Simplified tweets:37623**
 **Total time: 319.36826 s**
 
-WITH 8 SLAVES:
+*WITH 8 SLAVES:*
 ``` 
 Language: pt. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run6. Destination bucket: eurovisiondata
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
@@ -170,7 +174,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 **Total time: 93.43489 s**
 
 ------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------
+
 
 **Exercise 3 TOP BIGRAMS FOR SOME GIVEN LANGAUGES:**
 
@@ -191,7 +195,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 [((viszlát,nyár),41), ((-,viszlát),33), ((-,hungary),31), ((hungary,-),31), ((nyár,-),30), ((-,eurovision),28), ((aws,-),25), ((ez,a),23), (("#eurovisionhun,#eurovision),23), ((-,live),22)]
 ``` 
 ------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------
+
 
 **Exercise 4 TOP 10 RETWEETED TWEETS FROM THE TOP 10 MOST RETWEETED USERS:**
 ``` 
