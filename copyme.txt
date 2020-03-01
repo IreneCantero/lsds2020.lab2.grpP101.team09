@@ -1,9 +1,0 @@
-spark-submit --class upf.edu.TwitterLanguageFilterApp target/LSDS_P2-1.0-SNAPSHOT.jar en /home/carlos/Desktop/output eurovisiondata /home/carlos/Desktop/Eurovision3.json /home/carlos/Desktop/Eurovision5.json
-
-
-ON CLOUD:
-
-1. SELECT SPARK 
-2. DEPLOY MODE: CLUSTER
-3. EXTRA THINGS: --class upf.edu.TwitterLanguageFilterApp 
-4. ARGUMETNS: pt s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run1 eurovisiondata s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision4.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision5.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision6.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision7.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision8.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json

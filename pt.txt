@@ -1,3 +1,9 @@
+Exercise 1:
+
+pt:
+
+WITH 2 SLAVES:
+
 Language: pt. Output file: s3://edu.upf.ldsd2020.lab2.grp101.team09/output/run1. Destination bucket: eurovisiondata
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json
 Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision3.json: 35.85395 s
