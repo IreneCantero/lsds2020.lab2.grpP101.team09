@@ -7,13 +7,16 @@ First of all is that perhaps the implementation is not the most optimal one, bec
 many little steps to reach the solution. The second thing is regarding the input, because we followed the order of Lab 1 instead of the propose by David Solans
 in the forum. The input order of each exercise is as follows:
 </p>
-	 For exercise 1: language, output directory, inputs
-	 For exercise 2: language, output directory, bucket, inputs.
-		 NOTE: we were using a previous version of the program. That is why there is an unused argument "bucket". In the final version of the program the inputs are
-		like in exercise 1. We put this clarification, because in the the arguments provided in the steps of the cluster follows this format. Sorry for the inconvenience.
-	 For exercise 3: language, inputs
-	 For exercise 4: inputs
-
+<ul>
+	 <li>For exercise 1: language, output directory, inputs</li>
+	 <li>For exercise 2: language, output directory, bucket, inputs.</li>
+		<ul>
+		 <li>NOTE: we were using a previous version of the program. That is why there is an unused argument "bucket". In the final version of the program the inputs are
+		like in exercise 1. We put this clarification, because in the the arguments provided in the steps of the cluster follows this format. Sorry for the inconvenience.</li>
+		</ul>
+	 <li>For exercise 3: language, inputs</li>
+	 <li>For exercise 4: inputs</li>
+</ul>
 <p align = justify>The last thing we would like to point out is that we created a *MoreExtendedSimplifiedTweet* class to get some information of the retweeted tweets from the retweets. However, at the end we realized that perhaps it is rendundant this class, because we could get the same information in *ExtendedSimplifiedTweet*.</p>
 
 **Exercise 2 BENCHMARKS WITH DIFFERENT NUMBER OF SLAVES:**
