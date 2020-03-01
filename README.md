@@ -21,8 +21,7 @@ in the forum. The input order of each exercise is as follows:
 
 <p align = justify>Our bucket link is: https://s3.console.aws.amazon.com/s3/buckets/edu.upf.ldsd2020.lab2.grp101.team09/?region=us-east-1&tab=overview</p>
 
-<p align = justify>If you have any problem regarding the code or any implementation contact us through these email:</p> 
-**jian.chen01@estudiant.upf.edu** or **irene.cantero01@estudiant.upf.edu**
+<p align = justify>If you have any problem regarding the code or any implementation contact us through these email: <b>jian.chen01@estudiant.upf.edu</b> or <b>irene.cantero01@estudiant.upf.edu</b></p>
 
 ------------------------------------------------------------------------------------------------
 
