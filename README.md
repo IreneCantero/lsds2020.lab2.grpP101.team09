@@ -201,6 +201,7 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 
 **Exercise 4 TOP 10 RETWEETED TWEETS FROM THE TOP 10 MOST RETWEETED USERS:**
 <p>The format of the output is: [[userID], [TweetID], [retweet counts], [text]]</p>
+
 ``` 
 (40059553,465209499281014784,21913,eurovision is basically an episode of glee where europe decides their political disagreements by having a karaoke contest), (62513246,863484966021320710,18669,Portugal é o meu favorito até agora #Eurovision), 
 (437025093,995406052190445568,16882,Oye Israel, que esto lo hice yo antes que tu... #Eurovision #FinalEurovision https://t.co/bBnDjB9s4z),
