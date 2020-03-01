@@ -7,12 +7,12 @@ First of all is that perhaps the implementation is not the most optimal one, bec
 many little steps to reach the solution. The second thing is regarding the input, because we followed the order of Lab 1 instead of the propose by David Solans
 in the forum. The input order of each exercise is as follows:
 
-	- For exercise 1: language, output directory, inputs
-	- For exercise 2: language, output directory, bucket, inputs.
-		- NOTE: we were using a previous version of the program. That is why there is an unused argument "bucket". In the final version of the program the inputs are
+	 For exercise 1: language, output directory, inputs
+	 For exercise 2: language, output directory, bucket, inputs.
+		 NOTE: we were using a previous version of the program. That is why there is an unused argument "bucket". In the final version of the program the inputs are
 		like in exercise 1. We put this clarification, because in the the arguments provided in the steps of the cluster follows this format. Sorry for the inconvenience.
-	- For exercise 3: language, inputs
-	- For exercise 4: inputs
+	 For exercise 3: language, inputs
+	 For exercise 4: inputs
 
 **Exercise 2 BENCHMARKS WITH DIFFERENT NUMBER OF SLAVES:**
 
