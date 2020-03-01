@@ -1,6 +1,6 @@
 # LSDS-Lab2
 
-<h3>**Introduction**</h3>
+<h2>Introduction</h2>
 
 <p align = justify>This document contains all the benchmarks and results requested in this lab. However, we would like to use this README to clarify some nuances we had in the code.
 First of all, perhaps the implementation is not the most optimal one, because the code is the result of thinking little parts and then coding it; i.e. we did
@@ -19,7 +19,9 @@ in the forum. The input order of each exercise is as follows:
 </ul>
 <p align = justify>The last thing we would like to point out is that we created a *MoreExtendedSimplifiedTweet* class to get some information of the retweeted tweets from the retweets. However, at the end we realized that perhaps it is rendundant this class, because we could get the same information in *ExtendedSimplifiedTweet*.</p>
 
-<p>Our bucket link is: https://s3.console.aws.amazon.com/s3/buckets/edu.upf.ldsd2020.lab2.grp101.team09/?region=us-east-1&tab=overview</p>
+<p align = justify>Our bucket link is: https://s3.console.aws.amazon.com/s3/buckets/edu.upf.ldsd2020.lab2.grp101.team09/?region=us-east-1&tab=overview</p>
+
+<p align = justify>If you have any problem regarding the code or any implementation contact us through this email: **jian.chen01@estudiant.upf.edu** or **irene.cantero01@estudiant.upf.edu**</p>
 
 ------------------------------------------------------------------------------------------------
 
