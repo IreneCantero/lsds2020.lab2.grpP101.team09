@@ -1,8 +1,22 @@
 # LSDS-Lab2
 
-Exercise 1:
+**Introduction**
 
-es:
+This document contains all the benchmarks and results requested in this lab. However, we would like to use this README to clarify some nuances we have in the code.
+First of all is that perhaps the implementation is not the most optimal one, because the code is the result of thinking little parts and then coding it; i.e. we did
+many little steps to reach the solution. The second thing is regarding the input, because we followed the order of Lab 1 instead of the propose by David Solans
+in the forum. The input order of each exercise is as follows:
+
+	- For exercise 1: language, output directory, inputs
+	- For exercise 2: language, output directory, bucket, inputs.
+		- NOTE: we were using a previous version of the program. That is why there is an unused argument "bucket". In the final version of the program the inputs are
+		like in exercise 1. We put this clarification, because in the the arguments provided in the steps of the cluster follows this format. Sorry for the inconvenience.
+	- For exercise 3: language, inputs
+	- For exercise 4: inputs
+
+**Exercise 2 BENCHMARKS WITH DIFFERENT NUMBER OF SLAVES:**
+
+*es:*
 
 WITH 2 SLAVES:
 
@@ -23,8 +37,8 @@ Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json
 Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json: 17.510193 s
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json
 Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json: 107.02887 s
-Simplified tweets:509435
-Total time: 326.1342 s
+**Simplified tweets:509435**
+**Total time: 326.1342 s**
 
 WITH 8 SLAVES:
 
@@ -45,12 +59,11 @@ Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json
 Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision9.json: 3.3643157 s
 Processing: s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json
 Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.json: 21.795488 s
-Simplified tweets:509435
-Total time: 92.49645 s
+**Simplified tweets:509435**
+**Total time: 92.49645 s**
 
-------------------------------------------------------------------------------------------------
 
-hu:
+*hu:*
 
 WITH 2 SLAVES:
 
@@ -96,9 +109,8 @@ Partial time for s3://edu.upf.ldsd2020.lab2.grp101.team09/input/Eurovision10.jso
 Simplified tweets:1057
 Total time: 87.360115 s
 
-------------------------------------------------------------------------------------------------
 
-pt:
+*pt:*
 
 WITH 2 SLAVES:
 
@@ -147,26 +159,36 @@ Total time: 93.43489 s
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 
-Exercise 3:
+**Exercise 3 TOP BIGRAMS FOR SOME GIVEN LANGAUGES:**
 
-en: 
-Total words: [((of,the),5773), ((in,the),5162), ((for,the),4279), ((the,eurovision),3850), ((this,is),3203), ((is,the),2826), ((eurovision,song),2645), ((to,be),2607), (("this,is),2539), ((on,the),2477)]
-
-es:
-Total words: [((de,la),3407), ((que,no),2290), ((en,el),2129), ((de,#eurovision),1928), ((#eurovision,#finaleurovision"),1927), ((la,canción),1909), ((lo,que),1810), ((en,la),1782), ((a,la),1759), ((que,me),1479)]
-
-pt:
-Total words: [((é,que),225), ((que,a),221), ((a,música),184), ((o,ano),164), ((para,o),149), ((o,que),144), ((de,israel),139), ((com,a),137), ((#eurovision,#allaboard"),132), ((música,da),123)]
-
-hu:
-Total words: [((viszlát,nyár),41), ((-,viszlát),33), ((-,hungary),31), ((hungary,-),31), ((nyár,-),30), ((-,eurovision),28), ((aws,-),25), ((ez,a),23), (("#eurovisionhun,#eurovision),23), ((-,live),22)]
-
+*en:* 
+``` 
+[((of,the),5773), ((in,the),5162), ((for,the),4279), ((the,eurovision),3850), ((this,is),3203), ((is,the),2826), ((eurovision,song),2645), ((to,be),2607), (("this,is),2539), ((on,the),2477)]
+``` 
+*es:*
+``` 
+[((de,la),3407), ((que,no),2290), ((en,el),2129), ((de,#eurovision),1928), ((#eurovision,#finaleurovision"),1927), ((la,canción),1909), ((lo,que),1810), ((en,la),1782), ((a,la),1759), ((que,me),1479)]
+``` 
+*pt:*
+``` 
+[((é,que),225), ((que,a),221), ((a,música),184), ((o,ano),164), ((para,o),149), ((o,que),144), ((de,israel),139), ((com,a),137), ((#eurovision,#allaboard"),132), ((música,da),123)]
+``` 
+*hu:*
+``` 
+[((viszlát,nyár),41), ((-,viszlát),33), ((-,hungary),31), ((hungary,-),31), ((nyár,-),30), ((-,eurovision),28), ((aws,-),25), ((ez,a),23), (("#eurovisionhun,#eurovision),23), ((-,live),22)]
+``` 
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 
-Exercise 4:
-
-Final Result:  [(40059553,465209499281014784,21913,eurovision is basically an episode of glee where europe decides their political disagreements by having a karaoke contest), (62513246,863484966021320710,18669,Portugal é o meu favorito até agora #Eurovision), (437025093,995406052190445568,16882,Oye Israel, que esto lo hice yo antes que tu... #Eurovision #FinalEurovision https://t.co/bBnDjB9s4z), (38381308,995388604045316097,12957,Puigdemont ha logrado aparecerse durante unos segundos en el vestido de la participante de Estonia y ha proclamado… https://t.co/wbZc5R9Z4T), (24679473,995397243426541568,11567,See what he did there? #Eurovision #CzechRepublic  #CZE https://t.co/DwdfXmTqXg), (1501434991,995394150978727936,6291,Muy bien Alemania secuestrando a Ed Sheeran y poniéndole una peluca. #Eurovision), (39538010,995383476181401601,4597,Already hate it 0/10 #Eurovision #esp), (1264023596,995260351385161728,4437,Is there anything better than watching Eurovision? Yes, watching EUROVISION IN SIGN LANGUAGE 😂 https://t.co/FE3G51s9xe), (15584187,995433967351283712,4039,The Winner of the 2018 #Eurovision Song Contest is ISRAEL! #ESC2018 #AllAboard https://t.co/Myre7yh3YV), (3260160764,995397610927263745,3146,Cuando tienes que cantar en Eurovisión a las 9 pero estar en El Muro a las 11 #Eurovision https://t.co/w7hQdCBxx7)]
-
-
+**Exercise 4 TOP 10 RETWEETED TWEETS FROM THE TOP 10 MOST RETWEETED USERS:**
+``` 
+(40059553,465209499281014784,21913,eurovision is basically an episode of glee where europe decides their political disagreements by having a karaoke contest), (62513246,863484966021320710,18669,Portugal é o meu favorito até agora #Eurovision), 
+(437025093,995406052190445568,16882,Oye Israel, que esto lo hice yo antes que tu... #Eurovision #FinalEurovision https://t.co/bBnDjB9s4z),
+(38381308,995388604045316097,12957,Puigdemont ha logrado aparecerse durante unos segundos en el vestido de la participante de Estonia y ha proclamado… https://t.co/wbZc5R9Z4T), (24679473,995397243426541568,11567,See what he did there? #Eurovision #CzechRepublic  #CZE https://t.co/DwdfXmTqXg), 
+(1501434991,995394150978727936,6291,Muy bien Alemania secuestrando a Ed Sheeran y poniéndole una peluca. #Eurovision), 
+(39538010,995383476181401601,4597,Already hate it 0/10 #Eurovision #esp), 
+(1264023596,995260351385161728,4437,Is there anything better than watching Eurovision? Yes, watching EUROVISION IN SIGN LANGUAGE 😂 https://t.co/FE3G51s9xe),
+(15584187,995433967351283712,4039,The Winner of the 2018 #Eurovision Song Contest is ISRAEL! #ESC2018 #AllAboard https://t.co/Myre7yh3YV), 
+(3260160764,995397610927263745,3146,Cuando tienes que cantar en Eurovisión a las 9 pero estar en El Muro a las 11 #Eurovision https://t.co/w7hQdCBxx7)]
+``` 
 
